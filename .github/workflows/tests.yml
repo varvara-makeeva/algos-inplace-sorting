@@ -27,3 +27,11 @@ jobs:
           make
           ./sort_demo
           ./sort_test
+	      - name: Build and test Gauss
+        run: |
+          cd 03.Gauss
+          make clean || true
+          make
+          ./Gauss_test
+          ./Gauss_main AB.csv
+          ./integration_test.sh
