@@ -15,10 +15,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Clean old binaries
+        run: |
+          rm -f 01.InplaceSorting/sort_demo
+          rm -f 01.InplaceSorting/sort_test
+
       - name: Build and test inplace sorting
         run: |
           cd 01.InplaceSorting
+          make clean || true
           make
           ./sort_demo
           ./sort_test
-
