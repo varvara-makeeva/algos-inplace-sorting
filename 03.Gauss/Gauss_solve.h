@@ -2,4 +2,4 @@
 
 #include "util.h"
 
-GaussVector solve_gauss(const GaussMatrix& augmented_matrix);
+GaussVector Gauss_solve(GaussMatrix& ab);

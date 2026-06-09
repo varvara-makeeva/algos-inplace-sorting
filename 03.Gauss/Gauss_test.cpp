@@ -23,7 +23,7 @@ void test_two_by_two_system() {
     GaussVector expected(2);
     expected << 2, 1;
 
-    const GaussVector result = solve_gauss(matrix);
+    const GaussVector result = Gauss_solve(matrix);
 
     require(vectors_are_close(result, expected), "2x2 system");
 }
@@ -37,7 +37,7 @@ void test_three_by_three_system() {
     GaussVector expected(3);
     expected << 2, 3, -1;
 
-    const GaussVector result = solve_gauss(matrix);
+    const GaussVector result = Gauss_solve(matrix);
 
     require(vectors_are_close(result, expected), "3x3 system");
 }
@@ -51,7 +51,7 @@ void test_identity_matrix() {
     GaussVector expected(3);
     expected << 4, -2, 7;
 
-    const GaussVector result = solve_gauss(matrix);
+    const GaussVector result = Gauss_solve(matrix);
 
     require(vectors_are_close(result, expected), "identity matrix");
 }
@@ -65,7 +65,7 @@ void test_diagonal_matrix() {
     GaussVector expected(3);
     expected << 5, -2, 3;
 
-    const GaussVector result = solve_gauss(matrix);
+    const GaussVector result = Gauss_solve(matrix);
 
     require(vectors_are_close(result, expected), "diagonal matrix");
 }
@@ -95,7 +95,7 @@ void test_large_reproducible_random_system() {
     augmented.leftCols(size) = a;
     augmented.col(size) = b;
 
-    const GaussVector result = solve_gauss(augmented);
+    const GaussVector result = Gauss_solve(augmented);
 
     require(vectors_are_close(result, expected, 1e-7), "large reproducible random system");
 }
@@ -108,7 +108,7 @@ void test_wrong_matrix_size() {
     bool exception_was_thrown = false;
 
     try {
-        solve_gauss(matrix);
+        Gauss_solve(matrix);
     } catch (const std::runtime_error&) {
         exception_was_thrown = true;
     }

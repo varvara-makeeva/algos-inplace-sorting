@@ -1,2 +1,11 @@
 sort_demo
 sort_test
+
+# Compiled binaries
+01.InplaceSorting/sort_demo
+01.InplaceSorting/sort_test
+02.Base85/base85
+02.Base85/base85ed_test
+03.Gauss/Gauss_main
+03.Gauss/Gauss_test
+03.Gauss/result.csv
