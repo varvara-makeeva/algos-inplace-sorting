@@ -15,15 +15,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Eigen
+      - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libeigen3-dev
+          sudo apt-get install -y libeigen3-dev clang-format clang-tidy
 
-      - name: Clean old binaries
+      - name: Check coding style
         run: |
-          rm -f 01.InplaceSorting/sort_demo
-          rm -f 01.InplaceSorting/sort_test
+          clang-format --dry-run --Werror \
+            01.InplaceSorting/*.cpp 01.InplaceSorting/*.h \
+            02.Base85/*.cpp 02.Base85/*.h \
+            03.Gauss/*.cpp 03.Gauss/*.h
+
+      - name: Run static analyzer
+        run: |
+          clang-tidy \
+            01.InplaceSorting/*.cpp \
+            02.Base85/*.cpp \
+            03.Gauss/*.cpp \
+            -- -std=c++17 -I/usr/include/eigen3
 
       - name: Build and test inplace sorting
         run: |
@@ -32,6 +42,13 @@ jobs:
           make
           ./sort_demo
           ./sort_test
+
+      - name: Build and test Base85
+        run: |
+          cd 02.Base85
+          make clean || true
+          make
+          ./base85ed_test
 
       - name: Build and test Gauss
         run: |
