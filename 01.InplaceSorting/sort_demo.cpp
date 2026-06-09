@@ -4,16 +4,14 @@
 
 #include "sorting.h"
 
-void print_vector(const std::vector<int>& data)
-{
+void print_vector(const std::vector<int>& data) {
     for (int value : data) {
         std::cout << value << " ";
     }
     std::cout << std::endl;
 }
 
-int main()
-{
+int main() {
     std::vector<int> original = {5, -1, 7, 3, 3, 0, -10, 8};
 
     std::vector<int> insertion_data = original;
@@ -32,11 +30,9 @@ int main()
     print_vector(heap_data);
 
     std::cout << "Insertion correct: "
-              << std::is_sorted(insertion_data.begin(), insertion_data.end())
-              << std::endl;
+              << std::is_sorted(insertion_data.begin(), insertion_data.end()) << std::endl;
 
-    std::cout << "Heap correct: "
-              << std::is_sorted(heap_data.begin(), heap_data.end())
+    std::cout << "Heap correct: " << std::is_sorted(heap_data.begin(), heap_data.end())
               << std::endl;
 
     return 0;

@@ -17,8 +17,7 @@ void require(bool condition, const char* message) {
 
 void test_two_by_two_system() {
     GaussMatrix matrix(2, 3);
-    matrix << 2, 1, 5,
-              1, -1, 1;
+    matrix << 2, 1, 5, 1, -1, 1;
 
     GaussVector expected(2);
     expected << 2, 1;
@@ -30,9 +29,7 @@ void test_two_by_two_system() {
 
 void test_three_by_three_system() {
     GaussMatrix matrix(3, 4);
-    matrix << 2, 1, -1, 8,
-             -3, -1, 2, -11,
-             -2, 1, 2, -3;
+    matrix << 2, 1, -1, 8, -3, -1, 2, -11, -2, 1, 2, -3;
 
     GaussVector expected(3);
     expected << 2, 3, -1;
@@ -44,9 +41,7 @@ void test_three_by_three_system() {
 
 void test_identity_matrix() {
     GaussMatrix matrix(3, 4);
-    matrix << 1, 0, 0, 4,
-              0, 1, 0, -2,
-              0, 0, 1, 7;
+    matrix << 1, 0, 0, 4, 0, 1, 0, -2, 0, 0, 1, 7;
 
     GaussVector expected(3);
     expected << 4, -2, 7;
@@ -58,9 +53,7 @@ void test_identity_matrix() {
 
 void test_diagonal_matrix() {
     GaussMatrix matrix(3, 4);
-    matrix << 2, 0, 0, 10,
-              0, -4, 0, 8,
-              0, 0, 5, 15;
+    matrix << 2, 0, 0, 10, 0, -4, 0, 8, 0, 0, 5, 15;
 
     GaussVector expected(3);
     expected << 5, -2, 3;
@@ -102,8 +95,7 @@ void test_large_reproducible_random_system() {
 
 void test_wrong_matrix_size() {
     GaussMatrix matrix(2, 2);
-    matrix << 1, 2,
-              3, 4;
+    matrix << 1, 2, 3, 4;
 
     bool exception_was_thrown = false;
 

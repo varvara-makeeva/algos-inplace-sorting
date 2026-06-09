@@ -5,8 +5,7 @@
 
 #include "base85ed.h"
 
-std::vector<uint8_t> read_stdin()
-{
+std::vector<uint8_t> read_stdin() {
     std::vector<uint8_t> data;
     char c;
 
@@ -17,15 +16,13 @@ std::vector<uint8_t> read_stdin()
     return data;
 }
 
-void write_stdout(const std::vector<uint8_t>& data)
-{
+void write_stdout(const std::vector<uint8_t>& data) {
     for (uint8_t byte : data) {
         std::cout.put(static_cast<char>(byte));
     }
 }
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "Use -e/--encode or -d/--decode\n";
         return 1;

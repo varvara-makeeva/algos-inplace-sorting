@@ -8,17 +8,13 @@
 namespace base85 {
 
 static const std::array<uint8_t, 85> ALPHABET = {
-    '0','1','2','3','4','5','6','7','8','9',
-    'A','B','C','D','E','F','G','H','I','J','K','L','M',
-    'N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-    'a','b','c','d','e','f','g','h','i','j','k','l','m',
-    'n','o','p','q','r','s','t','u','v','w','x','y','z',
-    '!','#','$','%','&','(',')','*','+','-',';','<','=',
-    '>','?','@','^','_','`','{','|','}','~'
-};
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
+    'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+    'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
+    'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '!', '#', '$', '%', '&', '(',
+    ')', '*', '+', '-', ';', '<', '=', '>', '?', '@', '^', '_', '`', '{', '|', '}', '~'};
 
-int decode_char(uint8_t c)
-{
+int decode_char(uint8_t c) {
     for (int i = 0; i < 85; ++i) {
         if (ALPHABET[i] == c) {
             return i;
@@ -28,8 +24,7 @@ int decode_char(uint8_t c)
     throw std::invalid_argument("Invalid Base85 character");
 }
 
-std::vector<uint8_t> encode(const std::vector<uint8_t>& bytes)
-{
+std::vector<uint8_t> encode(const std::vector<uint8_t>& bytes) {
     std::vector<uint8_t> result;
 
     for (std::size_t i = 0; i < bytes.size(); i += 4) {
@@ -61,8 +56,7 @@ std::vector<uint8_t> encode(const std::vector<uint8_t>& bytes)
     return result;
 }
 
-std::vector<uint8_t> decode(const std::vector<uint8_t>& encoded)
-{
+std::vector<uint8_t> decode(const std::vector<uint8_t>& encoded) {
     std::vector<uint8_t> result;
 
     for (std::size_t i = 0; i < encoded.size(); i += 5) {
@@ -101,4 +95,4 @@ std::vector<uint8_t> decode(const std::vector<uint8_t>& encoded)
     return result;
 }
 
-}
+} // namespace base85

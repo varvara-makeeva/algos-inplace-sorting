@@ -4,9 +4,7 @@
 #include <cstddef>
 #include <utility>
 
-template <typename Iterator>
-void insertion_sort(Iterator begin, Iterator end)
-{
+template <typename Iterator> void insertion_sort(Iterator begin, Iterator end) {
     for (Iterator i = begin; i != end; ++i) {
         Iterator j = i;
         while (j != begin && *j < *(j - 1)) {
@@ -17,9 +15,7 @@ void insertion_sort(Iterator begin, Iterator end)
     }
 }
 
-template <typename Iterator>
-void heapify(Iterator begin, std::size_t heap_size, std::size_t root)
-{
+template <typename Iterator> void heapify(Iterator begin, std::size_t heap_size, std::size_t root) {
     std::size_t largest = root;
     std::size_t left = 2 * root + 1;
     std::size_t right = 2 * root + 2;
@@ -39,9 +35,7 @@ void heapify(Iterator begin, std::size_t heap_size, std::size_t root)
     }
 }
 
-template <typename Iterator>
-void heap_sort(Iterator begin, Iterator end)
-{
+template <typename Iterator> void heap_sort(Iterator begin, Iterator end) {
     std::size_t n = end - begin;
 
     if (n < 2) {
